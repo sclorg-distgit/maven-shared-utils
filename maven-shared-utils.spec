@@ -4,7 +4,7 @@
 
 Name:           %{?scl_prefix}%{pkg_name}
 Version:        0.4
-Release:        3.11%{?dist}
+Release:        3.12%{?dist}
 Summary:        Maven shared utility classes
 License:        ASL 2.0
 URL:            http://maven.apache.org/shared/maven-shared-utils
@@ -16,11 +16,11 @@ Patch0:         %{pkg_name}-tests.patch
 BuildArch:      noarch
 
 BuildRequires:  %{?scl_prefix_java_common}maven-local
-BuildRequires:  maven30-apache-commons-lang3
-BuildRequires:  maven30-apache-rat
-BuildRequires:  maven30-maven-shared
-BuildRequires:  maven30-maven-shade-plugin
-BuildRequires:  maven30-jsr-305
+BuildRequires:  %{?scl_prefix}apache-commons-lang3
+BuildRequires:  %{?scl_prefix}apache-rat
+BuildRequires:  %{?scl_prefix}maven-shared
+BuildRequires:  %{?scl_prefix}maven-shade-plugin
+BuildRequires:  %{?scl_prefix}jsr-305
 
 %description
 This project aims to be a functional replacement for plexus-utils in Maven.
@@ -37,20 +37,20 @@ API documentation for %{pkg_name}.
 
 %prep
 %setup -q -n %{pkg_name}-%{version}
-%{?scl:scl enable maven30 %{scl} - <<"EOF"}
+%{?scl:scl enable %{scl} - <<"EOF"}
 set -e -x
 %pom_remove_plugin org.codehaus.mojo:findbugs-maven-plugin
 %patch0 -p1
 %{?scl:EOF}
 
 %build
-%{?scl:scl enable maven30 %{scl} - <<"EOF"}
+%{?scl:scl enable %{scl} - <<"EOF"}
 set -e -x
 %mvn_build
 %{?scl:EOF}
 
 %install
-%{?scl:scl enable maven30 %{scl} - <<"EOF"}
+%{?scl:scl enable %{scl} - <<"EOF"}
 set -e -x
 %mvn_install
 %{?scl:EOF}
@@ -64,6 +64,9 @@ set -e -x
 %doc LICENSE NOTICE
 
 %changelog
+* Mon Jan 11 2016 Michal Srb <msrb@redhat.com> - 0.4-3.12
+- maven33 rebuild #2
+
 * Sat Jan 09 2016 Michal Srb <msrb@redhat.com> - 0.4-3.11
 - maven33 rebuild
 
