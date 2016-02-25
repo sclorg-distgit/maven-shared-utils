@@ -4,7 +4,7 @@
 
 Name:           %{?scl_prefix}%{pkg_name}
 Version:        0.4
-Release:        3.12%{?dist}
+Release:        3.13%{?dist}
 Summary:        Maven shared utility classes
 License:        ASL 2.0
 URL:            http://maven.apache.org/shared/maven-shared-utils
@@ -15,7 +15,7 @@ Patch0:         %{pkg_name}-tests.patch
 
 BuildArch:      noarch
 
-BuildRequires:  %{?scl_prefix_java_common}maven-local
+BuildRequires:  %{?scl_prefix}maven-local
 BuildRequires:  %{?scl_prefix}apache-commons-lang3
 BuildRequires:  %{?scl_prefix}apache-rat
 BuildRequires:  %{?scl_prefix}maven-shared
@@ -64,6 +64,9 @@ set -e -x
 %doc LICENSE NOTICE
 
 %changelog
+* Mon Feb 08 2016 Michal Srb <msrb@redhat.com> - 0.4-3.13
+- Fix BR on maven-local & co.
+
 * Mon Jan 11 2016 Michal Srb <msrb@redhat.com> - 0.4-3.12
 - maven33 rebuild #2
 
