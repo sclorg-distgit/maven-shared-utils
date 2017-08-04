@@ -3,7 +3,7 @@
 
 Name:           %{?scl_prefix}maven-shared-utils
 Version:        3.1.0
-Release:        4.1%{?dist}
+Release:        4.2%{?dist}
 Summary:        Maven shared utility classes
 License:        ASL 2.0
 URL:            http://maven.apache.org/shared/maven-shared-utils
@@ -54,6 +54,9 @@ API documentation for %{pkg_name}.
 %license LICENSE NOTICE
 
 %changelog
+* Thu Jun 22 2017 Michael Simacek <msimacek@redhat.com> - 3.1.0-4.2
+- Mass rebuild 2017-06-22
+
 * Wed Jun 21 2017 Java Maintainers <java-maint@redhat.com> - 3.1.0-4.1
 - Automated package import and SCL-ization
 
